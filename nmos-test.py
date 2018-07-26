@@ -14,11 +14,25 @@
 
 from flask import Flask, render_template, flash, request
 from wtforms import Form, validators, StringField, SelectField, IntegerField
+from testrail import *
 
 import argparse
+import configparser
 
 import IS0401Test
 import IS0501Test
+
+config = configparser.ConfigParser()
+config.read('config.ini')
+
+test_rail = APIClient(config['Credentials']['TestRailUrl'])
+test_rail.user = config['Credentials']['UserEmail']
+test_rail.password = config['Credentials']['ApiKey']
+
+case = test_rail.send_post(
+  'add_plan_entry' + '/' + config['TestRunDetails']['TestPlanId'],
+  { 'suite_id': config['TestRunDetails']['TestSuiteId'] }
+)
 
 app = Flask(__name__)
 app.debug = True
@@ -56,6 +70,7 @@ def index_page():
                 result = test_obj.run_tests()
             else:
                 result = test_obj.run_test(args.test_number)
+            print(result[0][3])
             return render_template("result.html", url=url, test=test, result=result)
         else:
             flash("Error: {}".format(form.errors))
