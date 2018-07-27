@@ -28,6 +28,15 @@ The result of the the test will be shown after a couple seconds.
 
 Tested with Firefox 58 and Chrome 63.
 
+### TestRail support (testing mode)
+This branch contains version that have TestRail support. Now it works as follows:
+
+1. You should open config.ini and fill it with your credentials, desired test plan and test suite IDs and also desired test run name.
+
+2. Also there are sections with test cases IDs corresponding to test cases of Riedel.
+
+3. After launch script creates new test run in specified test plan and fills it with test cases used in selected test.
+
 ##  External dependencies:
 - Python3
 
