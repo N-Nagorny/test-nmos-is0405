@@ -469,7 +469,7 @@ class IS0501Test:
         if len(self.senders) > 0:
             valid, response = self.check_staged_complies_with_constraints("sender", self.senders)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
@@ -482,7 +482,7 @@ class IS0501Test:
         if len(self.receivers) > 0:
             valid, response = self.check_staged_complies_with_constraints("receiver", self.receivers)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
@@ -495,7 +495,7 @@ class IS0501Test:
         if len(self.senders) > 0:
             valid, response = self.check_patch_response_schema_valid("sender", self.senders)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
@@ -508,7 +508,7 @@ class IS0501Test:
         if len(self.receivers) > 0:
             valid, response = self.check_patch_response_schema_valid("receiver", self.receivers)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
@@ -521,7 +521,7 @@ class IS0501Test:
         if len(self.senders) > 0:
             valid, response = self.check_refuses_invalid_patch("sender", self.senders)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
@@ -534,7 +534,7 @@ class IS0501Test:
         if len(self.receivers) > 0:
             valid, response = self.check_refuses_invalid_patch("receiver", self.receivers)
             if valid:
-                return test_number, test_description, "Pass"
+                return test_number, test_description, "Pass", ""
             else:
                 return test_number, test_description, "Fail", response
         else:
